@@ -24,13 +24,13 @@ initialize();
 // guess PHP just knows that it's truer than true...
 
 while ('RIAA is evil') {
-	if (tick())			continue;	// keep the various objects doing their thing
-	
-	if (catch_std())	continue;	// data from stdin
-	if (catch_db())		continue;	// data from database
-	if (catch_irc())	continue;	// data from IRC server
-	
-	usleep($config['sleeptime']);	// prevent the system from locking up if there's no data from any source
+    if (tick())         continue;   // keep the various objects doing their thing
+    
+    if (catch_std())    continue;   // data from stdin
+    if (catch_db())     continue;   // data from database
+    if (catch_irc())    continue;   // data from IRC server
+    
+    usleep($config['sleeptime']);   // prevent the system from locking up if there's no data from any source
 }
 
   //=====================================================================//

@@ -1,4 +1,5 @@
 STENOBOT
+========
 This system was developed to conduct voting and IRC meeting moderation
 activities for the Pirate Party of Canada. It is made up of three parts,
 which share a common database. It is currently in early beta, and is far from
@@ -25,6 +26,7 @@ The web interface for voting. This is mainly independent from the other two.
 
 
 BOT
+---
 To run the bot, simply type:
 	cd bot
 	./stenobot.php
@@ -42,6 +44,7 @@ have been requested by the Pirate Party's Chair.
 
 
 WWW
+---
 While it contains some half-functional code, the only page used by the bot is
 login.php. This folder is designed to be operated at the root of a domain or
 subdomain. It is fairly explanatory, and will be linked by Stenobot when needed
@@ -50,6 +53,7 @@ users are able to speak and participate.
 
 
 VOTE
+----
 Like www, this folder should have its own independent domain or subdomain. It 
 is used exclusively for voting. Motions and votes are not presently added to
 the database automatically, so this must be done by hand. The database
@@ -58,6 +62,7 @@ structure is fairly straightforward and should require little explanation.
 Similarly, vote results can be pulled from the raw numbers in the database
 using the following query:
 
+{{{
 SELECT a.name, DATE_FORMAT(a.start, '%Y-%m-%d') AS date,
 	(SELECT COUNT(*) FROM votes AS b WHERE b.vid = a.vid AND b.vote = 'y') AS y,
 	(SELECT COUNT(*) FROM votes AS c WHERE c.vid = a.vid AND c.vote = 'n') AS n,
@@ -65,6 +70,7 @@ SELECT a.name, DATE_FORMAT(a.start, '%Y-%m-%d') AS date,
 	IF(a.status = 'voting', 'yes', '') AS open
 	FROM motions AS a
 	ORDER BY start DESC
+}}}
 
 As this is used by an officially bilingual party, there is a significant amount
 of hard-coded language translations. This will need to be customized to suit
