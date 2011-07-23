@@ -10,33 +10,29 @@ affects all three parts of the program.
 
 Next, create a new database for Stenobot, then run the following MySQL command:
 
-*mysql -u[username] -p[password] [database name] < stenobot.sql*
+    mysql -u[username] -p[password] [database name] < stenobot.sql
 
 The program is divided into the following sections:
 
 
-./bot
-The IRC bot, which operates as a PHP shell script.
+*./bot* - The IRC bot, which operates as a PHP shell script.
 
-./www
-The web interface for the bot.
+*./www* - The web interface for the bot.
 
-./vote
-The web interface for voting. This is mainly independent from the other two.
+*./vote* - The web interface for voting. This is mainly independent from the other two.
 
 
 BOT
 ---
 To run the bot, simply type:
 
-	*cd bot*
-
-	*./stenobot.php*
+	cd bot
+	./stenobot.php
 
 All other interaction can be done via the IRC interface. For details, use the
 IRC command:
 
-	*/msg sb help*
+	/msg sb help
 
 sb is the default helper nick, but it can be changed in the configuration file.
 If needed, it is also possible to inject raw IRC and PHP commands into the
