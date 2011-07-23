@@ -28,11 +28,16 @@ The web interface for voting. This is mainly independent from the other two.
 BOT
 ---
 To run the bot, simply type:
+
 	*cd bot*
+
 	*./stenobot.php*
+
 All other interaction can be done via the IRC interface. For details, use the
 IRC command:
+
 	*/msg sb help*
+
 sb is the default helper nick, but it can be changed in the configuration file.
 If needed, it is also possible to inject raw IRC and PHP commands into the
 script at run time via the CLI. Any command preceded by 0 will be interpreted
