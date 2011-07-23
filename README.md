@@ -5,12 +5,12 @@ activities for the Pirate Party of Canada. It is made up of three parts,
 which share a common database. It is currently in early beta, and is far from
 feature-complete.
 
-First, edit ./config.php to match database and IRC server settings. This
+First, edit *./config.php* to match database and IRC server settings. This
 affects all three parts of the program.
 
 Next, create a new database for Stenobot, then run the following MySQL command:
 
-mysql -u[username] -p[password] [database name] < stenobot.sql
+*mysql -u[username] -p[password] [database name] < stenobot.sql*
 
 The program is divided into the following sections:
 
@@ -28,11 +28,11 @@ The web interface for voting. This is mainly independent from the other two.
 BOT
 ---
 To run the bot, simply type:
-	cd bot
-	./stenobot.php
+	*cd bot*
+	*./stenobot.php*
 All other interaction can be done via the IRC interface. For details, use the
 IRC command:
-	/msg sb help
+	*/msg sb help*
 sb is the default helper nick, but it can be changed in the configuration file.
 If needed, it is also possible to inject raw IRC and PHP commands into the
 script at run time via the CLI. Any command preceded by 0 will be interpreted
@@ -62,15 +62,15 @@ structure is fairly straightforward and should require little explanation.
 Similarly, vote results can be pulled from the raw numbers in the database
 using the following query:
 
-{{{
-SELECT a.name, DATE_FORMAT(a.start, '%Y-%m-%d') AS date,
-	(SELECT COUNT(*) FROM votes AS b WHERE b.vid = a.vid AND b.vote = 'y') AS y,
-	(SELECT COUNT(*) FROM votes AS c WHERE c.vid = a.vid AND c.vote = 'n') AS n,
-	(SELECT COUNT(*) FROM votes AS d WHERE d.vid = a.vid AND d.vote = 'a') AS a,
-	IF(a.status = 'voting', 'yes', '') AS open
-	FROM motions AS a
-	ORDER BY start DESC
-}}}
+
+    SELECT a.name, DATE_FORMAT(a.start, '%Y-%m-%d') AS date,
+	    (SELECT COUNT(*) FROM votes AS b WHERE b.vid = a.vid AND b.vote = 'y') AS y,
+	    (SELECT COUNT(*) FROM votes AS c WHERE c.vid = a.vid AND c.vote = 'n') AS n,
+	    (SELECT COUNT(*) FROM votes AS d WHERE d.vid = a.vid AND d.vote = 'a') AS a,
+	    IF(a.status = 'voting', 'yes', '') AS open
+	    FROM motions AS a
+	    ORDER BY start DESC
+
 
 As this is used by an officially bilingual party, there is a significant amount
 of hard-coded language translations. This will need to be customized to suit
